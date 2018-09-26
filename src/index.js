@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import App from './App'
+import Previewer from './Containers/Previewer'
 
 import './index.scss'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<Previewer />, document.getElementById('root'))
 
 module.hot.accept()

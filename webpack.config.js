@@ -2,6 +2,7 @@ const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack');
 
 module.exports = (env) => ({
   entry: './src/',
@@ -18,10 +19,15 @@ module.exports = (env) => ({
         use: ['babel-loader']
       },
       {
+        test: /\.(svg|png)$/,
+        loader: 'file-loader',
+        options: {}
+      },
+      {
         test: /\.s?css$/,
         exclude: /node_modules/,
         use: [
-          env === 'dev' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          env === 'prod' ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
           'sass-loader'
         ]
@@ -37,7 +43,8 @@ module.exports = (env) => ({
     new MiniCssExtractPlugin({
       filename: 'style.css'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new Dotenv()
   ],
   devServer: {
     contentBase: './dist',
