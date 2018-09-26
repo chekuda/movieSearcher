@@ -9,12 +9,14 @@ class Previewer extends Component {
   }
 
   retrieveData = (query, page) => {
+    if(!query) return
+
     const currentPage = `&page=${page ? page : 1}`
-    const currentQuery = `&query=${query ? query : 'mama'}`
+    const currentQuery = `&query=${query}`
     get('https://api.themoviedb.org/3/search/multi', `${currentQuery}${currentPage}`)
     .then(data =>
       this.setState({
-        movies: data.results.filter(ele => ele.title && ele.backdrop_path)
+        movies: (data.results || []).filter(ele => ele.title && ele.backdrop_path)
       })
     )
   }

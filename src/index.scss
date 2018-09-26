@@ -1,5 +1,7 @@
-@import "normalize-scss";
+@import "~normalize-scss/sass/normalize";
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+@include normalize();
 
 * {
   margin: 0;
@@ -15,6 +17,6 @@ body {
   background: #ccc;
 }
 
-img {
+img, i {
   display: block;
 }

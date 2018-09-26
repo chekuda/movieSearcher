@@ -2,6 +2,8 @@ import React from 'react'
 
 import './Card.scss'
 
+import start from '../../assets/images/star-solid.svg'
+
 const Card = ({
   id,
   title,
@@ -26,13 +28,7 @@ const Card = ({
         </div>
         <div className="info-block">
           <div className="info">
-            { vote_average }
-          </div>
-          <div className="info">
-            { release_date }
-          </div>
-          <div className="info">
-            { original_language }
+            <img className="star" src={start} width="15" height="20"/> { vote_average }
           </div>
         </div>
       </section>

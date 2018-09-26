@@ -21,7 +21,10 @@ module.exports = (env) => ({
       {
         test: /\.(svg|png)$/,
         loader: 'file-loader',
-        options: {}
+        options: {
+          name: 'assets/[name].[ext]',
+          context: './src/Assets/images/'
+        }
       },
       {
         test: /\.s?css$/,

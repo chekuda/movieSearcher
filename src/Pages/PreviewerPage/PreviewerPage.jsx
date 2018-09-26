@@ -3,7 +3,7 @@ import React from 'react'
 import SearchBar from '../../Components/SearchBar'
 import CardContainer from '../../Containers/CardContainer'
 
-import logo from '../../Assets/images/ms.png'
+import logo from '../../assets/images/ms.png'
 
 import './PreviewerPage.scss'
 
