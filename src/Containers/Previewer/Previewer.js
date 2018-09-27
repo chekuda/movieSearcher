@@ -4,43 +4,40 @@ import PreviewerPage from '../../Pages/PreviewerPage'
 import { get } from '../../helpers/customFetch'
 
 class Previewer extends Component {
-  state = {
-    movies: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      movies: []
+    }
   }
 
-  retrieveData = (query, page) => {
-    if(!query) return
-
-    const currentPage = `&page=${page ? page : 1}`
-    const currentQuery = `&query=${query}`
-    get('https://api.themoviedb.org/3/search/multi', `${currentQuery}${currentPage}`)
-    .then(data =>
-      this.setState({
-        movies: (data.results || []).filter(ele => ele.title && ele.backdrop_path)
-      })
-    )
+  retrieveData = query => {
+    if(query) {
+      get('https://api.themoviedb.org/3/search/multi', `&query=${query}`)
+      .then(data =>
+        this.setState({
+          movies: (data.results || []).filter(ele => ele.title && ele.backdrop_path)
+        })
+      )
+    } else {
+        this.setState({ movies: [] })
+    }
   }
 
   onSearchChange = ({ target }) => {
     const { value } = target
-
     this.retrieveData(value)
     this.setState({
-      searchText: value,
-      searchStarted: true
+      searchText: value
     })
   }
 
-  componentDidMount(){
-    this.retrieveData()
-  }
   render() {
     return (
       <PreviewerPage
         onSearchChange={this.onSearchChange}
         movies={this.state.movies}
         searchText={this.state.searchText}
-        searchStarted={this.state.searchStarted}
       />
     )
   }
