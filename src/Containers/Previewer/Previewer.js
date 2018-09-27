@@ -14,11 +14,11 @@ class Previewer extends Component {
   retrieveData = query => {
     if(query) {
       get('https://api.themoviedb.org/3/search/multi', `&query=${query}`)
-      .then(data =>
-        this.setState({
-          movies: (data.results || []).filter(ele => ele.title && ele.backdrop_path)
-        })
-      )
+        .then(data =>
+          this.setState({
+            movies: (data.results || []).filter(ele => ele.title && ele.backdrop_path)
+          })
+        )
     } else {
         this.setState({ movies: [] })
     }
