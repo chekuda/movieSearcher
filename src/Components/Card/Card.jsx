@@ -9,8 +9,6 @@ const Card = ({
   title,
   backdrop_path,
   vote_average,
-  release_date,
-  original_language,
   cardHovered,
   onCardHover
 }) => {
