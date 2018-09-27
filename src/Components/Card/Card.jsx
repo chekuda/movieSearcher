@@ -19,14 +19,14 @@ const Card = ({
       onMouseEnter={() => onCardHover(id)}
       onMouseLeave={() => onCardHover()}
     >
-      <img src={`http://image.tmdb.org/t/p/w342/${backdrop_path}`} alt={title} />
+      <img className='card-image' src={`http://image.tmdb.org/t/p/w342/${backdrop_path}`} alt={title} />
       <section className={`description ${isActive}`}>
         <div className="title info">
           { title }
         </div>
         <div className="info-block">
           <div className="info">
-            <img className="star" src={start} width="15" height="20"/> { vote_average }
+            <img className="star" src={start} width="15" height="20"/>{ vote_average }
           </div>
         </div>
       </section>

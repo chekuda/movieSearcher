@@ -54,7 +54,7 @@ describe('Previewer Page', () => {
       describe('and there are some movies feched', () => {
         const currentProps = {
           ...newProps,
-          movies: [{ name: 'movie' }, {name: 'second-movie'}]
+          movies: [{ name: 'movie', id: 2 }, {name: 'second-movie', id: 2}]
         }
         const component = shallow(<PreviwerPage {...currentProps}/>)
         it('will render as many card as movies received', () => {
